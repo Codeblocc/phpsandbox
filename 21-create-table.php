@@ -17,18 +17,19 @@ if (!$conn){
 }
 echo "Connection was successful";
 
-// Create a table in the database
+// create a table in the db
+$sql = "CREATE TABLE `phptrip` ( `sno` INT(11) NOT NULL AUTO_INCREMENT , `name` VARCHAR(11) NOT NULL , `dest` VARCHAR(11) NOT NULL , PRIMARY KEY (`sno`))";
 
-$sql = "CREATE TABLE `phptrip` ( `sr no` INT(6) NOT NULL AUTO_INCREMENT ,  `name` VARCHAR(12) NOT NULL ,  `destination` VARCHAR(12) NOT NULL ,    PRIMARY KEY  (`sr no`))";
+// check for the table creation sucess
 
-$result = mysqli_query($conn, $sql);
+$result = mysqli_query($conn, $sql); // this will execute the query
 
-// check for the table creation success
+// check for the database creation sucess
 if($result){
-    echo "the table was created successfully!";
+    echo "the table was created successfully";
 }
-else {
-    echo "the table was not created successfully becase of this error ---> ". mysqli_error($conn);
+else{
+    echo "the table was not created successfully because of this error ---> ". mysqli_error($conn);
 }
 
 ?>
