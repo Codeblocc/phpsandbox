@@ -74,7 +74,7 @@ echo "Connection was successful";
 // submit these to a database
 
 // Sql query to be executed.
-$sql = "INSERT INTO `contactus` (`Sr No`, `Name`, `Email`, `Concern`, `Date`) VALUES ('$name', '$email', '$desc', current_timestamp())";
+$sql = "INSERT INTO `contactus` (`Name`, `Email`, `Concern`, `Date`) VALUES ('$name', '$email', '$desc', current_timestamp())";
 $result = mysqli_query($conn, $sql);
 
 if($result){
