@@ -51,30 +51,51 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+    $name = $_POST['name'];
     $email = $_POST['email'];
-    $password = $_POST['pass'];
+    $desc = $_POST['desc'];
     echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>Success!</strong> Your email ' .$email. ' and password '. $password. ' has been submitted successfully!
+    <strong>Success!</strong> Your entry has been submitted successfully!
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>';
 }
 
-// submit these 2 to a database
+// Connecting to the database
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "dbabhishek";
+
+// Create a connection
+$conn = mysqli_connect($servername, $username, $password, $database);
+
+// Die if connection was not successful
+if (!$conn){
+    die("Sorry, we failed to connect: ". mysqli_connect_error());
+}
+echo "Connection was successful";
+// submit these to a database
 
 ['']
 ?>
 
 <div class="container mt-3">
     <h1>Contact us for your concerns</h1>
-<form action="/phpcrash/18-get-post.php" method="post">
+<form action="/phpcrash/23-form.php" method="post">
   <div class="mb-3">
-    <label for="email" class="form-label">Email address</label>
+    <label for="name" class="form-label"><b>Name</b></label>
+    <input type="text" name="name" class="form-control" id="name" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">Name is mandatory.</div>
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label"><b>Email</b></label>
     <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
   </div>
   <div class="mb-3">
-    <label for="password" class="form-label">Password</label>
-    <input type="password" class="form-control" id="password" name="pass">
+    <label for="desc" class="form-label"><b>Description</b></label>
+    <input type="type" name="desc" class="form-control" id="desc" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">Issue description is mandatory.</div>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
