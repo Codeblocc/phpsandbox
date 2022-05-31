@@ -54,17 +54,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $name = $_POST['name'];
     $email = $_POST['email'];
     $desc = $_POST['desc'];
-    echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>Success!</strong> Your entry has been submitted successfully!
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>';
+    
 }
 
 // Connecting to the database
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "dbabhishek";
+$database = "contacts";
 
 // Create a connection
 $conn = mysqli_connect($servername, $username, $password, $database);
@@ -75,6 +72,20 @@ if (!$conn){
 }
 echo "Connection was successful";
 // submit these to a database
+
+// Sql query to be executed.
+$sql = "INSERT INTO `contactus` (`Sr No`, `Name`, `Email`, `Concern`, `Date`) VALUES ('$name', '$email', '$desc', current_timestamp())";
+$result = mysqli_query($conn, $sql);
+
+if($result){
+  echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Success!</strong> Your entry has been submitted successfully!
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>';
+}
+else{
+    echo "record was not inserted successfully because of this error ---> ". mysqli_error($conn);
+}
 
 ['']
 ?>
