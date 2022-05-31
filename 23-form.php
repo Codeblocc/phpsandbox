@@ -70,7 +70,6 @@ $conn = mysqli_connect($servername, $username, $password, $database);
 if (!$conn){
     die("Sorry, we failed to connect: ". mysqli_connect_error());
 }
-echo "Connection was successful";
 // submit these to a database
 
 // Sql query to be executed.
@@ -84,7 +83,11 @@ if($result){
 </div>';
 }
 else{
-    echo "record was not inserted successfully because of this error ---> ". mysqli_error($conn);
+    // echo "record was not inserted successfully because of this error ---> ". mysqli_error($conn);
+  echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>ERROR! </strong> Whoops! We are facing some technical issues and your entry was not submitted successfully. Inconvenience regretted.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>';
 }
 
 ['']
