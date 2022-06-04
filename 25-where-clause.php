@@ -21,7 +21,7 @@ $sql = "SELECT * FROM `phptrip` WHERE `dest`='LA'";
 $result = mysqli_query($conn, $sql);
 
 
-// Usage of Where clause to fetch data from the database
+// Usage of WHERE clause to fetch data from the database
 $num = mysqli_num_rows($result);
 echo $num;
 echo " records found in the database<br>";
@@ -36,4 +36,17 @@ if($num > 0){
         $no = $no + 1;
     }
 }
+
+// Usage of WHERE clause to update data
+
+$sql = "UPDATE `phptrip` SET `name` = 'HorfordUpdated' WHERE `phptrip`.`sno` = 4";
+$result = mysqli_query($conn, $sql);
+$aff = mysqli_affected_rows($conn);
+echo "<br> Number of affected rows: $aff <br>";
+if($result){
+    echo "We updated the record successfully!!!";
+}else{
+    echo "We could not update the record successfully.";
+}
+
 ?>
